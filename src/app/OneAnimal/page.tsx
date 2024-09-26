@@ -17,7 +17,6 @@ export default function Page() {
     if (id) {
       const data = await fetchOneData("animals", id);
       setAnimal(data);
-      console.log(data.owner)
     }
     setIsLoading(false);
   };
@@ -38,20 +37,23 @@ export default function Page() {
             sx={{ bgcolor: "grey.900" }}
           />
         </div>
-      ) :animal? (
+      ) : animal ? (
         <div className="bg-gray-900 m-10 p-6 rounded-2xl cursor-default">
           <h1>Name: {animal?.name}</h1>
           <h1>DateOfBirth: {animal?.dateOfBirth}</h1>
           <h1>Species: {animal?.species}</h1>
           <h1>Breed: {animal?.species}</h1>
           <h1>Color: {animal?.color}</h1>
-          <h1>Weight: {animal?.weight/1000} kg</h1>
+          <h1>Weight: {animal?.weight / 1000} kg</h1>
           <h1>
-            Owner: {animal?.owner?.firstName} {animal?.owner?.lastName}
+            {animal.owner
+              ? "Owner: " + animal.owner.firstName + " " + animal.owner.lastName
+              : "No owner"}
           </h1>
         </div>
-      ):(<div className="m-10 p-6">Une erreur est survenue</div>
-        )}
+      ) : (
+        <div className="m-10 p-6">Une erreur est survenue</div>
+      )}
     </div>
   );
 }

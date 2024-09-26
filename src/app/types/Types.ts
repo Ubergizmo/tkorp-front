@@ -4,6 +4,7 @@ export type Person = {
   email: string;
   phoneNumber: string;
   id: number;
+  animals: Animal[] | [];
 };
 
 export type Animal = {

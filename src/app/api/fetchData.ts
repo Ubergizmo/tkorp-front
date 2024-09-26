@@ -18,16 +18,7 @@ export async function fetchOneData(endpoint: Endpoint, id: string) {
   try {
     const response = await axios.get(URL + endpoint + `/${id}`);
     const { data } = response;
-    if (endpoint === "animals") {
-      const owner = (await axios.get(URL + "persons" + `/${id}`)).data;
-      return {
-        ...data,
-        owner: {
-          firstName: owner.firstName,
-          lastName: owner.lastName,
-        },
-      };
-    }
+    console.log(data)
     return data;
   } catch (error) {
     console.error(error);

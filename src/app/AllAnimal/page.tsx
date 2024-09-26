@@ -8,7 +8,7 @@ import { fetchDatas } from "../api/fetchData";
 
 export default function Page() {
   const [page, setPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [animals, setAnimals] = useState<Animal[] | null>(null);
 
   const handlePage = (page: number) => {

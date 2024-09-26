@@ -2,7 +2,7 @@
 "use client";
 import React, { useLayoutEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Person } from "../types/Types";
+import { Animal, Person } from "../types/Types";
 import { Skeleton } from "@mui/material";
 import { fetchOneData } from "../api/fetchData";
 
@@ -20,6 +20,8 @@ export default function Page() {
     }
     setIsLoading(false);
   };
+
+  console.log(person?.animals);
 
   useLayoutEffect(() => {
     fetchAllAnimals();
@@ -43,6 +45,14 @@ export default function Page() {
           <h1>LastName: {person?.lastName}</h1>
           <h1>Email: {person?.email}</h1>
           <h1>PhoneNumber: {person?.phoneNumber}</h1>
+          <h1>Animals: {person.animals.length === 0 && "No animals"} </h1>
+          <ul className="list-disc pl-6">
+            {person?.animals.map((animal: Animal, index: number) => (
+              <li key={index}>
+                {animal.name} the {animal.species}{" "}
+              </li>
+            ))}
+          </ul>
         </div>
       ) : (
         <div className="m-10 p-6">Une erreur est survenue</div>
