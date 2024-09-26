@@ -20,3 +20,5 @@ export type Animal = {
     lastName: string;
   };
 };
+
+export type Endpoint = "animals" | "persons";
